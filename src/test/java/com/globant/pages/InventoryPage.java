@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -38,11 +39,19 @@ public class InventoryPage {
         return inventoryTitle.getText();
     }
 
-    // Purchase a random product
-    public void addProductToCart(){
+    // Purchase a random products
+
+    public void addProductsToCart(int quantity) {
         Random rand = new Random();
-        int index = rand.nextInt(inventoryProductsButtons.size());
-        inventoryProductsButtons.get(index).click();
+        List<WebElement> availableProducts = new ArrayList<>(inventoryProductsButtons);
+
+        int total = Math.min(quantity, availableProducts.size()); // máximo disponible
+
+        for (int i = 0; i < total && !availableProducts.isEmpty(); i++) {
+            int index = rand.nextInt(availableProducts.size());
+            availableProducts.get(index).click();
+            availableProducts.remove(index);
+        }
     }
 
     public CartPage clickShoppingCartButton(){

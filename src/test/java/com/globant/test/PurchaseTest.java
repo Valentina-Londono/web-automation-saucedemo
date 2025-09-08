@@ -29,7 +29,7 @@ public class PurchaseTest extends BaseTest {
     @Parameters({"firstName", "lastName", "postalCode"})
     @Test
     public void purchaseProductsAndConfirm(String firstName, String lastName, String postalCode) {
-        inventoryPage.addProductToCart();
+        inventoryPage.addProductsToCart(1);
         cartPage = inventoryPage.clickShoppingCartButton();
 
         checkoutPage = cartPage.clickCheckoutButton();

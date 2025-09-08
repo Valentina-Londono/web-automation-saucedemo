@@ -1,6 +1,7 @@
 package com.globant.pages;
 
 import com.globant.utils.WaitHelper;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -26,11 +27,17 @@ public class CartPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void removeProductsFromCart(int quantity){
-        for (int i = 1; i <= quantity; i++){
-            productsInCart.get(i).click();
+    public void removeProductsFromCart(int quantity) {
+        for (int i = 0; i < quantity; i++) {
+            List<WebElement> currentCart = driver.findElements(By.cssSelector(".cart_button"));
+
+            if (currentCart.isEmpty()) {
+                break;
+            }
+            currentCart.get(0).click();
         }
     }
+
 
     public boolean checkCartIsEmpty(){
         return productsInCart.isEmpty();

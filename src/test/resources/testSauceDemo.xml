@@ -14,4 +14,11 @@
             <class name="com.globant.test.PurchaseTest"/>
         </classes>
     </test>
+    <test name="removeProductsFromCart">
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+        <classes>
+            <class name="com.globant.test.RemoveProductsTest"/>
+        </classes>
+    </test>
 </suite>
