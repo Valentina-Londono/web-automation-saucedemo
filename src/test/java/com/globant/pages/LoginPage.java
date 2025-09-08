@@ -42,6 +42,12 @@ public class LoginPage {
         return new InventoryPage(driver);
     }
 
+    public InventoryPage loginSuccess(String username, String password) {
+        enterUsername(username);
+        enterPassword(password);
+        return clickLoginButton();
+    }
+
     public boolean isLoginErrorMessageDisplayed() {
         wait.waitForVisibility(loginErrorMessage);
         return loginErrorMessage.isDisplayed();

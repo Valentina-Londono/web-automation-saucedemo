@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="SauceDemo Suite">
+    <test name="Purchase Test">
+        <!-- Login parameters -->
+        <parameter name="username" value="standard_user"/>
+        <parameter name="password" value="secret_sauce"/>
+
+        <!-- Purchase parameters -->
+        <parameter name="firstName" value="Valentina"/>
+        <parameter name="lastName" value="Londono"/>
+        <parameter name="postalCode" value="760001"/>
+
+        <classes>
+            <class name="com.globant.test.PurchaseTest"/>
+        </classes>
+    </test>
+</suite>

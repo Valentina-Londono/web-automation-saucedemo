@@ -1,8 +1,0 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Inventory Suite">
-    <test name="Inventory Test">
-        <classes>
-            <class name="com.globant.test.InventorySteps"/>
-        </classes>
-    </test>
-</suite>

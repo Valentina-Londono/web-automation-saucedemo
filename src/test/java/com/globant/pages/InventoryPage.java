@@ -6,6 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+import java.util.Random;
+
 public class InventoryPage {
     private WebDriver driver;
     private WaitHelper wait;
@@ -14,8 +17,11 @@ public class InventoryPage {
     @FindBy(className = "title")
     private WebElement inventoryTitle;
 
-    @FindBy(id = "add-to-cart-sauce-labs-backpack")
-    private WebElement inventoryProductButton;
+    @FindBy(css = ".btn_inventory ")
+    private List<WebElement> inventoryProductsButtons;
+
+    @FindBy(id = "remove-sauce-labs-backpack")
+    private WebElement inventoryRemoveButton;
 
     @FindBy(className = "shopping_cart_link")
     private WebElement shoppingCartButton;
@@ -32,12 +38,15 @@ public class InventoryPage {
         return inventoryTitle.getText();
     }
 
+    // Purchase a random product
     public void addProductToCart(){
-        inventoryProductButton.click();
+        Random rand = new Random();
+        int index = rand.nextInt(inventoryProductsButtons.size());
+        inventoryProductsButtons.get(index).click();
     }
 
     public CartPage clickShoppingCartButton(){
         shoppingCartButton.click();
-        return new CartPage();
+        return new CartPage(driver);
     }
 }

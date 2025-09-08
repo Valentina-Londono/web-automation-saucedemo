@@ -1,8 +1,0 @@
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Checkout Suite">
-    <test name="Checkout Test">
-        <classes>
-            <class name="com.globant.test.CheckoutSteps"/>
-        </classes>
-    </test>
-</suite>
