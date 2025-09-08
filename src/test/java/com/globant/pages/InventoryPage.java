@@ -13,6 +13,7 @@ import java.util.Random;
 public class InventoryPage {
     private WebDriver driver;
     private WaitHelper wait;
+    private AsideMenuPage asideMenuPage;
     public static final String INVENTORY_URL = "inventory.html";
 
     @FindBy(className = "title")
@@ -31,7 +32,12 @@ public class InventoryPage {
     public InventoryPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WaitHelper(this.driver);
+        this.asideMenuPage = new AsideMenuPage(this.driver);
         PageFactory.initElements(driver, this);
+    }
+
+    public AsideMenuPage getAsideMenuPage() {
+        return asideMenuPage;
     }
 
     public String getInventoryTitle(){
@@ -45,7 +51,7 @@ public class InventoryPage {
         Random rand = new Random();
         List<WebElement> availableProducts = new ArrayList<>(inventoryProductsButtons);
 
-        int total = Math.min(quantity, availableProducts.size()); // máximo disponible
+        int total = Math.min(quantity, availableProducts.size());
 
         for (int i = 0; i < total && !availableProducts.isEmpty(); i++) {
             int index = rand.nextInt(availableProducts.size());

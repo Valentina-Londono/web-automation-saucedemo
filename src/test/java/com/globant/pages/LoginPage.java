@@ -57,4 +57,8 @@ public class LoginPage {
         wait.waitForVisibility(loginErrorMessage);
         return loginErrorMessage.getText();
     }
+
+    public boolean isLoginPageDisplayed(){
+        return userNameField.isDisplayed();
+    }
 }
